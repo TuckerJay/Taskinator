@@ -104,6 +104,8 @@ var createTaskEl = function(taskDataObj) {
 
     tasks.push(taskDataObj);
 
+    saveTasks();
+
 
     // add entire list item to list
     tasksToDoEl.appendChild(listItemEl);
@@ -231,6 +233,8 @@ var completeEditTask = function(taskName, taskType, taskId) {
 
     }
 
+    saveTasks();
+
 
     alert("Task Updated!");
 
@@ -264,6 +268,8 @@ var deleteTask = function(taskId) {
 
 
     tasks = updatedTaskArr;
+
+    saveTasks();
 
 };
 
@@ -300,6 +306,7 @@ var taskStatusChangeHandler = function(event) {
 
     }
 
+    saveTasks();
 
 };
 
@@ -327,6 +334,13 @@ var taskButtonHandler = function(event) {
         deleteTask(taskId);
 
     }
+
+};
+
+
+var saveTasks = function () {
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 
 };
 
